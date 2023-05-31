@@ -43,9 +43,9 @@ const User = mongoose.model("userInfo");
 
 app.post("/register", async(req,res)=>{
     const {fname,lname,email,password}=req.body;
-   const encryptedPassword= await bcrypt.hash(password,10);
+   const encryptedPassword= await bcryptjs.hash(password,10);
     try {
-        const oldUser = user.findOne({email});
+        const oldUser = User.findOne({email});
        if(oldUser){
         res.send({error:"user exists"});
          }
@@ -54,7 +54,7 @@ app.post("/register", async(req,res)=>{
         fname,
         lname,
         email,
-        password: encryptedpassword,
+        password: encryptedPassword,
     
        });
        res.send({status:"ok"});

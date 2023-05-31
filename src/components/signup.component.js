@@ -19,7 +19,7 @@ export default class SignUp extends Component {
       crossDomain:"true",
       headers:{
         "content-type":"application/json",
-        Accept:"application/jsaon",
+        Accept:"application/json",
         "Access-Control-allow-Origin":"*",
 
       },
