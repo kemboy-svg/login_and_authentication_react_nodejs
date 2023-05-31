@@ -2,7 +2,8 @@ const express =require("express");
 const app= express();
 const mongoose =require("mongoose");
 app.use(express.json())
-// const cors= require ("cors");
+const cors= require ("cors");
+app.use(cors());
 
 
 const mongoUrl = "mongodb+srv://kemboy:wEQGanIinjD2oOC3@cluster0.st7vikr.mongodb.net/?retryWrites=true&w=majority";
@@ -46,8 +47,7 @@ app.post("/register", async(req,res)=>{
         lname,
         email,
         password,
-        
-
+    
        });
        res.send({status:"ok"});
     } catch (error) {
