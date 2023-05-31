@@ -4,6 +4,8 @@ const mongoose =require("mongoose");
 app.use(express.json())
 const cors= require ("cors");
 app.use(cors());
+const bcryptjs =require("bcryptjs");
+
 
 
 const mongoUrl = "mongodb+srv://kemboy:wEQGanIinjD2oOC3@cluster0.st7vikr.mongodb.net/?retryWrites=true&w=majority";
@@ -41,12 +43,18 @@ const User = mongoose.model("userInfo");
 
 app.post("/register", async(req,res)=>{
     const {fname,lname,email,password}=req.body;
+   const encryptedPassword= await bcrypt.hash(password,10);
     try {
+        const oldUser = user.findOne({email});
+       if(oldUser){
+        res.send({error:"user exists"});
+         }
+
        await User.create({
         fname,
         lname,
         email,
-        password,
+        password: encryptedpassword,
     
        });
        res.send({status:"ok"});
