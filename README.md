@@ -2,6 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Sign up and Login page
+This repo provides a  complete functionality of sign up and login websie. You are required to set up mongodb and connect it to your app.
+
 ## Available Scripts
 
 In the project directory, you can run:
